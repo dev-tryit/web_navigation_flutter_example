@@ -2,10 +2,8 @@ import 'package:appbar_flutter_example/MyAppBar.dart';
 import 'package:appbar_flutter_example/MyLayout.dart';
 import 'package:flutter/material.dart';
 
-class MainPage extends StatelessWidget {
-  static String pageName = "MainPage";
-
-  MainPage({Key? key}) : super(key: key);
+class Sub1Page extends StatelessWidget {
+  static String pageName = "Sub1Page";
 
   @override
   Widget build(BuildContext context) {
@@ -15,7 +13,7 @@ class MainPage extends StatelessWidget {
         child: SingleChildScrollView(
           child: Column(
             children: [
-              Text("MainPage"),
+              Text("Sub1Page"),
             ],
           ),
         ),

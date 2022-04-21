@@ -1,10 +1,11 @@
+import 'package:appbar_flutter_example/MainPage.dart';
 import 'package:appbar_flutter_example/OnHover.dart';
+import 'package:appbar_flutter_example/PageUtil.dart';
+import 'package:appbar_flutter_example/Sub1Page.dart';
 import 'package:appbar_flutter_example/main.dart';
 import 'package:flutter/material.dart';
 
-enum MyAppBarAlignment {
-  left,center,right
-}
+enum MyAppBarAlignment { left, center, right }
 
 class MenuItem {
   Widget mainMenu;
@@ -18,46 +19,55 @@ class MyAppBar extends StatefulWidget {
   MyAppBarAlignment alignment;
   double intervalSpaceSize;
 
-  MyAppBar({Key? key, required this.height, this.alignment=MyAppBarAlignment.right, this.intervalSpaceSize=0}) : super(key: key);
+  MyAppBar(
+      {Key? key,
+      required this.height,
+      this.alignment = MyAppBarAlignment.right,
+      this.intervalSpaceSize = 0})
+      : super(key: key);
 
   @override
   State<MyAppBar> createState() => _MyAppBarState();
 }
 
 class _MyAppBarState extends State<MyAppBar> {
-  final menuItemList = [
-    MenuItem(Text("Menu1"), [
-      Text("SubMenu1"),
-      Text("SubMenu2"),
-      Text("SubMenu3"),
-    ]),
-    MenuItem(Text("Menu2"), [
-      Text("SubMenu1"),
-      Text("SubMenu2"),
-      Text("SubMenu3"),
-    ]),
-    MenuItem(Text("Menu3"), [
-      Text("SubMenu1"),
-      Text("SubMenu2"),
-      Text("SubMenu3"),
-    ]),
-    MenuItem(Text("Menu4"), [
-      Text("SubMenu1"),
-      Text("SubMenu2"),
-      Text("SubMenu3"),
-    ]),
-  ];
-
   @override
   Widget build(BuildContext context) {
+    List<MenuItem> menuItemList = [
+      MenuItem(
+          InkWell(
+              child: Text("Menu1"),
+              onTap: () => PageUtil.go(context, MainPage.pageName)),
+          [
+            InkWell(
+                child: Text("SubMenu1"),
+                onTap: () => PageUtil.go(context, Sub1Page.pageName)),
+            Text("SubMenu2"),
+            Text("SubMenu3"),
+          ]),
+      MenuItem(Text("Menu2"), [
+        Text("SubMenu1"),
+        Text("SubMenu2"),
+        Text("SubMenu3"),
+      ]),
+      MenuItem(Text("Menu3"), [
+        Text("SubMenu1"),
+        Text("SubMenu2"),
+        Text("SubMenu3"),
+      ]),
+      MenuItem(Text("Menu4"), [
+        Text("SubMenu1"),
+        Text("SubMenu2"),
+        Text("SubMenu3"),
+      ]),
+    ];
+
     MainAxisAlignment mainAxisAlignment;
-    if(widget.alignment==MyAppBarAlignment.left) {
+    if (widget.alignment == MyAppBarAlignment.left) {
       mainAxisAlignment = MainAxisAlignment.start;
-    }
-    else if(widget.alignment==MyAppBarAlignment.center) {
+    } else if (widget.alignment == MyAppBarAlignment.center) {
       mainAxisAlignment = MainAxisAlignment.center;
-    }
-    else {
+    } else {
       mainAxisAlignment = MainAxisAlignment.end;
     }
 

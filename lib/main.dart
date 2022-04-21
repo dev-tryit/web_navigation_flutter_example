@@ -1,4 +1,6 @@
 import 'package:appbar_flutter_example/MainPage.dart';
+import 'package:appbar_flutter_example/Sub1Page.dart';
+import 'package:appbar_flutter_example/UnknownPage.dart';
 import 'package:flutter/material.dart';
 
 void main() {
@@ -14,6 +16,19 @@ class MyApp extends StatelessWidget {
     return MaterialApp(
       title: '웹페이지입니다',
       home: MainPage(),
+      initialRoute: "/${MainPage.pageName}",
+      onGenerateRoute: (settings) {
+        if (settings.name == "/${Sub1Page.pageName}") {
+          return PageRouteBuilder(
+            settings: settings,
+            pageBuilder: (_, __, ___) => Sub1Page(),
+          );
+        }
+        return PageRouteBuilder(
+          settings: settings,
+          pageBuilder: (_, __, ___) => MainPage(),
+        );
+      },
     );
   }
 }
