@@ -15,6 +15,7 @@ class _OnHoverState extends State<OnHover> {
   @override
   Widget build(BuildContext context) {
     return MouseRegion(
+      cursor: SystemMouseCursors.click,
       onEnter: (_) => onEntered(true),
       onExit: (_) => onEntered(false),
       child: widget.builder(isHovered),
