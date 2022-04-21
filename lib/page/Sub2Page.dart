@@ -3,7 +3,8 @@ import 'package:appbar_flutter_example/widget/MyLayout.dart';
 import 'package:flutter/material.dart';
 
 class Sub2Page extends StatelessWidget {
-  static String pageName = "Sub2Page";
+  static String className = "Sub2Page";
+  static String pageName = "/$className";
 
   @override
   Widget build(BuildContext context) {

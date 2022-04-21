@@ -1,9 +1,9 @@
 import 'package:appbar_flutter_example/page/MainPage.dart';
 import 'package:appbar_flutter_example/widget/OnHover.dart';
-import 'package:appbar_flutter_example/util/PageUtil.dart';
 import 'package:appbar_flutter_example/page/Sub1Page.dart';
 import 'package:appbar_flutter_example/main.dart';
 import 'package:flutter/material.dart';
+import 'package:go_router/go_router.dart';
 
 enum MyAppBarAlignment { left, center, right }
 
@@ -37,11 +37,11 @@ class _MyAppBarState extends State<MyAppBar> {
       MenuItem(
           InkWell(
               child: Text("Menu1"),
-              onTap: () => PageUtil.go(context, MainPage.pageName)),
+              onTap: () => context.go(MainPage.pageName)),
           [
             InkWell(
                 child: Text("SubMenu1"),
-                onTap: () => PageUtil.go(context, Sub1Page.pageName)),
+                onTap: () => context.go( Sub1Page.pageName)),
             Text("SubMenu2"),
             Text("SubMenu3"),
           ]),

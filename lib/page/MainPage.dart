@@ -3,7 +3,8 @@ import 'package:appbar_flutter_example/widget/MyLayout.dart';
 import 'package:flutter/material.dart';
 
 class MainPage extends StatelessWidget {
-  static String pageName = "MainPage";
+  static String className = "MainPage";
+  static String pageName = "/";
 
   MainPage({Key? key}) : super(key: key);
 
