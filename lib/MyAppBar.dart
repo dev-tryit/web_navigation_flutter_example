@@ -1,19 +1,66 @@
-import 'package:appbar_flutter_example/MenuItem.dart';
 import 'package:appbar_flutter_example/OnHover.dart';
+import 'package:appbar_flutter_example/main.dart';
 import 'package:flutter/material.dart';
+
+enum MyAppBarAlignment {
+  left,center,right
+}
+
+class MenuItem {
+  Widget mainMenu;
+  List<Widget> subMenuList;
+
+  MenuItem(this.mainMenu, this.subMenuList);
+}
 
 class MyAppBar extends StatefulWidget {
   double height;
+  MyAppBarAlignment alignment;
+  double intervalSpaceSize;
 
-  MyAppBar({Key? key, required this.height}) : super(key: key);
+  MyAppBar({Key? key, required this.height, this.alignment=MyAppBarAlignment.right, this.intervalSpaceSize=0}) : super(key: key);
 
   @override
   State<MyAppBar> createState() => _MyAppBarState();
 }
 
 class _MyAppBarState extends State<MyAppBar> {
+  final menuItemList = [
+    MenuItem(Text("Menu1"), [
+      Text("SubMenu1"),
+      Text("SubMenu2"),
+      Text("SubMenu3"),
+    ]),
+    MenuItem(Text("Menu2"), [
+      Text("SubMenu1"),
+      Text("SubMenu2"),
+      Text("SubMenu3"),
+    ]),
+    MenuItem(Text("Menu3"), [
+      Text("SubMenu1"),
+      Text("SubMenu2"),
+      Text("SubMenu3"),
+    ]),
+    MenuItem(Text("Menu4"), [
+      Text("SubMenu1"),
+      Text("SubMenu2"),
+      Text("SubMenu3"),
+    ]),
+  ];
+
   @override
   Widget build(BuildContext context) {
+    MainAxisAlignment mainAxisAlignment;
+    if(widget.alignment==MyAppBarAlignment.left) {
+      mainAxisAlignment = MainAxisAlignment.start;
+    }
+    else if(widget.alignment==MyAppBarAlignment.center) {
+      mainAxisAlignment = MainAxisAlignment.center;
+    }
+    else {
+      mainAxisAlignment = MainAxisAlignment.end;
+    }
+
     return Stack(
       children: [
         Container(
@@ -21,67 +68,64 @@ class _MyAppBarState extends State<MyAppBar> {
           height: widget.height,
           width: double.infinity,
         ),
-        Container(
-          child: Row(
-            mainAxisAlignment: MainAxisAlignment.end,
-            children: [
-              OnHover(
-                builder: (isHovered) => MenuItem(
-                    "Menu1",
-                    [
-                      Text("SubMenu1"),
-                      Text("SubMenu2"),
-                      Text("SubMenu3"),
-                    ],
-                    widget.height,
-                    isTransparent: isHovered,
-                  )
-              ),
-              SizedBox(width: 100),
-              OnHover(
-                builder: (isHovered) => MenuItem(
-                  "Menu2",
-                  [
-                    Text("SubMenu1"),
-                    Text("SubMenu2"),
-                    Text("SubMenu3"),
-                  ],
-                  widget.height,
-                  isTransparent: isHovered,
-                )
-              ),
-              SizedBox(width: 100),
-              OnHover(
-                builder: (isHovered) => MenuItem(
-                  "Menu3",
-                  [
-                    Text("SubMenu1"),
-                    Text("SubMenu2"),
-                    Text("SubMenu3"),
-                  ],
-                  widget.height,
-                  isTransparent: isHovered,
-                )
-              ),
-              SizedBox(width: 100),
-              OnHover(
-                builder: (isHovered) => MenuItem(
-                  "Menu4",
-                  [
-                    Text("SubMenu1"),
-                    Text("SubMenu2"),
-                    Text("SubMenu3"),
-                  ],
-                  widget.height,
-                  isTransparent: isHovered,
-                )
-              ),
-              SizedBox(width: 20),
-            ],
-          ),
+        Row(
+          mainAxisAlignment: mainAxisAlignment,
+          children: menuItemList
+              .asMap()
+              .map((i, e) => MapEntry(
+                  i,
+                  Padding(
+                    padding: i == 0
+                        ? EdgeInsets.zero
+                        : EdgeInsets.only(left: widget.intervalSpaceSize),
+                    child: OnHover(
+                      builder: (isHovered) => MenuItemWidget(
+                        e.mainMenu,
+                        e.subMenuList,
+                        widget.height,
+                        isTransparent: isHovered,
+                      ),
+                    ),
+                  )))
+              .values
+              .toList(),
         ),
       ],
     );
   }
+}
 
+class MenuItemWidget extends StatelessWidget {
+  Widget mainMenu;
+  List<Widget> subMenu;
+  bool isTransparent;
+  double height;
+
+  MenuItemWidget(
+    this.mainMenu,
+    this.subMenu,
+    this.height, {
+    Key? key,
+    required this.isTransparent,
+  }) : super(key: key);
+
+  @override
+  Widget build(BuildContext context) {
+    return Column(
+      children: [
+        Container(
+          height: height,
+          alignment: Alignment.center,
+          child: mainMenu,
+        ),
+        Opacity(
+          opacity: isTransparent ? 1 : 0,
+          child: Column(
+            mainAxisAlignment: MainAxisAlignment.start,
+            children: subMenu,
+          ),
+        )
+      ],
+    );
+  }
 }

@@ -24,7 +24,7 @@ class MyLayout extends StatelessWidget {
               left: 0,
               right: 0,
               top: 0,
-              child: MyAppBar(height: height),
+              child: MyAppBar(height: height, alignment: MyAppBarAlignment.right, intervalSpaceSize: 20),
             ),
           ],
         ),
