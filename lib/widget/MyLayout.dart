@@ -1,4 +1,4 @@
-import 'package:appbar_flutter_example/MyAppBar.dart';
+import 'package:appbar_flutter_example/widget/MyAppBar.dart';
 import 'package:flutter/material.dart';
 
 class MyLayout extends StatelessWidget {

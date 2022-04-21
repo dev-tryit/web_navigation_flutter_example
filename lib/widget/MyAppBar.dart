@@ -1,7 +1,7 @@
-import 'package:appbar_flutter_example/MainPage.dart';
-import 'package:appbar_flutter_example/OnHover.dart';
-import 'package:appbar_flutter_example/PageUtil.dart';
-import 'package:appbar_flutter_example/Sub1Page.dart';
+import 'package:appbar_flutter_example/page/MainPage.dart';
+import 'package:appbar_flutter_example/widget/OnHover.dart';
+import 'package:appbar_flutter_example/util/PageUtil.dart';
+import 'package:appbar_flutter_example/page/Sub1Page.dart';
 import 'package:appbar_flutter_example/main.dart';
 import 'package:flutter/material.dart';
 

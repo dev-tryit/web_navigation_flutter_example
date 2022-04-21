@@ -1,6 +1,6 @@
-import 'package:appbar_flutter_example/MainPage.dart';
-import 'package:appbar_flutter_example/Sub1Page.dart';
-import 'package:appbar_flutter_example/UnknownPage.dart';
+import 'package:appbar_flutter_example/page/MainPage.dart';
+import 'package:appbar_flutter_example/page/Sub1Page.dart';
+import 'package:appbar_flutter_example/page/UnknownPage.dart';
 import 'package:flutter/material.dart';
 
 void main() {
