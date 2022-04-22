@@ -33,6 +33,7 @@ class MyApp extends StatelessWidget {
       ),
     ],
     urlPathStrategy: UrlPathStrategy.path, //Flutter 웹 주소에 #이 들어가는 것을 막기 위한 전략
+    debugLogDiagnostics: true, //라우팅 디버깅 옵션
   );
 
   @override
