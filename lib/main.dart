@@ -43,25 +43,4 @@ class MyApp extends StatelessWidget {
         routerDelegate: _router.routerDelegate,
         title: 'GoRouter Example',
       );
-// // This widget is the root of your application.
-// @override
-// Widget build(BuildContext context) {
-//   return MaterialApp(
-//     title: '웹페이지입니다',
-//     home: MainPage(),
-//     initialRoute: "/${MainPage.pageName}",
-//     onGenerateRoute: (settings) {
-//       if (settings.name == "/${Sub1Page.pageName}") {
-//         return PageRouteBuilder(
-//           settings: settings,
-//           pageBuilder: (_, __, ___) => Sub1Page(),
-//         );
-//       }
-//       return PageRouteBuilder(
-//         settings: settings,
-//         pageBuilder: (_, __, ___) => MainPage(),
-//       );
-//     },
-//   );
-// }
 }
