@@ -32,6 +32,7 @@ class MyApp extends StatelessWidget {
             NoTransitionPage<void>(child: Sub2Page()),
       ),
     ],
+    urlPathStrategy: UrlPathStrategy.path, //Flutter 웹 주소에 #이 들어가는 것을 막기 위한 전략
   );
 
   @override
